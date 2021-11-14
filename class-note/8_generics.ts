@@ -35,3 +35,18 @@ function logTextUnion(text: string | number) {
 }
 logTextUnion("gd");
 logTextUnion(1313);
+
+function logGeneric<T>(text: T): T {
+  console.log(text);
+  return text;
+}
+
+const str = logGeneric<string>("abc"); // <string>을(재네릭) 써준순간 파라미터와 return 값의 타입 모두 string으로 인식을 하게 된다.
+
+// 인터페이스에 제네릭을 선언하는 방법
+interface Dropdown<T> {
+  value: T;
+  selected: boolean;
+}
+
+const obj: Dropdown<string> = { value: "abc", selected: true }; // 선언쪽에 string 제네릭을 걸어줌으로서 value의 타입은 따로선언해주지 않아도 string이 된다.
