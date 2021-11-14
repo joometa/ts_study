@@ -50,3 +50,14 @@ interface Dropdown<T> {
 }
 
 const obj: Dropdown<string> = { value: "abc", selected: true }; // 선언쪽에 string 제네릭을 걸어줌으로서 value의 타입은 따로선언해주지 않아도 string이 된다.
+
+// 제네릭의 타입 제한
+function logTextLength<T>(text: T[]) {
+  console.log(text.length);
+  text.forEach((item) => {
+    console.log(item);
+  });
+  return text;
+}
+
+logTextLength<string>(["hi", "abcc"]);
