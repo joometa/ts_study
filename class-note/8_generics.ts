@@ -76,3 +76,18 @@ function logTextLength2<T extends LengthType>(text: T): T {
   text.length;
   return text;
 } // 에러안남 : 이미 선언된 LengthType을 포함(확장) 시켰기 때문에 -> extends
+
+//--------------------------------------------------------------------------
+// 제네릭의 타입 제한 3 - keyof
+interface ShoppingItem {
+  name: string;
+  price: number;
+  stock: number;
+}
+
+// extends keyof "" 는 ""의 선언된 타입의 key값중에 하나만 사용이 가능하다는 뜻 다른값을 파라미터에 담을 수 없게 제한함
+function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption: T): T {
+  return itemOption;
+}
+getShoppingItemOption("name"); // 가능
+getShoppingItemOption("shit"); // ShoppingItem 타입안에있는 key값(name, price, stock)이 아니기때문에 오류남ㅋ
