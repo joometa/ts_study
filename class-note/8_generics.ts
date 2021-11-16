@@ -61,3 +61,18 @@ function logTextLength<T>(text: T[]) {
 }
 
 logTextLength<string>(["hi", "abcc"]);
+//-------------------------------------------------------------------------
+// 제네릭 타입 제한 2 - 정의된 타입 이용하기
+interface LengthType {
+  length: number;
+}
+
+// function logTextLength2 <T>(text:T): T{
+//   text.length;
+//   return text;
+// }  에러남
+
+function logTextLength2<T extends LengthType>(text: T): T {
+  text.length;
+  return text;
+} // 에러안남 : 이미 선언된 LengthType을 포함(확장) 시켰기 때문에 -> extends
