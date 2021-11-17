@@ -47,3 +47,11 @@ var detailedItem: DetailedUpdown<number> = {
   value: 1111,
   tag: 2222,
 };
+
+// 가장 적절한 타입(Best Common Type)
+var arr1 = [1, 2, 3]; // [number]
+var arr2 = [1, 2, true]; // [number | boolean]
+var arr3 = [1, 2, true, "a"]; // [number | boolean | string]
+
+// 유니온 타입으로 적절한 타입들을 추론하며 Best Common Type을 제공해줌 (자세한 내용은 아래 링크)
+// https://joshua1988.github.io/ts/guide/type-inference.html#%EB%AC%B8%EB%A7%A5%EC%83%81%EC%9D%98-%ED%83%80%EC%9D%B4%ED%95%91-contextual-typing
