@@ -90,4 +90,4 @@ function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption: T): T {
   return itemOption;
 }
 getShoppingItemOption("name"); // 가능
-getShoppingItemOption("shit"); // ShoppingItem 타입안에있는 key값(name, price, stock)이 아니기때문에 오류남ㅋ
+// getShoppingItemOption("shit"); // ShoppingItem 타입안에있는 key값(name, price, stock)이 아니기때문에 오류남ㅋ
