@@ -14,6 +14,10 @@
       this.coffeeBeans = coffeeBeans;
     }
 
+    static makeCoffeeMachine(coffeeBeans: number): CoffeeMaker {
+      return new CoffeeMaker(coffeeBeans);
+    }
+
     makeCoffee(shots: number): CoffeeCup {
       if (this.coffeeBeans < shots * CoffeeMaker.BEANS_GRAMM_PER_SHOT) {
         throw new Error("Not enough coffee beans!");
@@ -27,4 +31,9 @@
   }
 
   const maker = new CoffeeMaker(32);
+  // static 활용해서 new 생성자 없이 바로 객체단위로 생성시키는것도 가능
+  // ex: const absolute = Math.abs(12.51);
+  const maker2 = CoffeeMaker.makeCoffeeMachine(7);
+
+  // static 사용 안할시에는 그냥 생성자로 클래스 만들면 그안에 일관되게 들어있음
 }
