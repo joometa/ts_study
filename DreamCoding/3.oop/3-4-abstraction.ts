@@ -10,7 +10,15 @@
     makeCoffee(shots: number): CoffeeCup;
   }
 
-  class CoffeeMachine implements CoffeeMaker {
+  // 3가지 함수가 지정된 인터페이스
+  interface CommercialCoffeeMaker {
+    makeCoffee(shots: number): CoffeeCup;
+    fillCoffeeBeans(beans: number): void;
+    clean(): void;
+  }
+
+  // implements 를 쓰면 이어오는 인터페이스 규약을 따라가게 되는듯
+  class CoffeeMachine implements CoffeeMaker, CommercialCoffeeMaker {
     private static BEANS_GRAMM_PER_SHOT = 7;
     private coffeeBeans: number = 0;
 
@@ -45,6 +53,10 @@
       console.log(`${shots}잔의 커피를 내리는 중입니다.`);
       return { shots, hasMilk: false };
     }
+
+    clean() {
+      console.log("기계 청소중...✨");
+    }
     makeCoffee(shots: number): CoffeeCup {
       this.grindBeans(shots);
       this.preheat();
@@ -56,6 +68,9 @@
   maker.fillCoffeeBeans(32);
   maker.makeCoffee(2);
 
-  const maker2: CoffeeMaker = CoffeeMachine.makeMachine(44);
-  maker2.makeCoffee(22);
+  // 생성할때 인터페이스를 지정해두면 해당 생성자에 존재하는 함수들을 인터페이스 안에있는것들로만 제한하여 사용할 수 있음.
+  const maker2: CommercialCoffeeMaker = CoffeeMachine.makeMachine(44);
+  maker2.makeCoffee(11);
+  maker2.fillCoffeeBeans(33);
+  maker2.clean();
 }
