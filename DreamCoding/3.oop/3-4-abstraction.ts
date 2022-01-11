@@ -64,13 +64,35 @@
     }
   }
 
-  const maker: CoffeeMachine = CoffeeMachine.makeMachine(32);
-  maker.fillCoffeeBeans(32);
-  maker.makeCoffee(2);
-
   // 생성할때 인터페이스를 지정해두면 해당 생성자에 존재하는 함수들을 인터페이스 안에있는것들로만 제한하여 사용할 수 있음.
-  const maker2: CommercialCoffeeMaker = CoffeeMachine.makeMachine(44);
-  maker2.makeCoffee(11);
-  maker2.fillCoffeeBeans(33);
-  maker2.clean();
+  // const maker2: CommercialCoffeeMaker = CoffeeMachine.makeMachine(44);
+  // maker2.makeCoffee(11);
+  // maker2.fillCoffeeBeans(33);
+  // maker2.clean();
+
+  // 아마추어
+  class AmateurUser {
+    constructor(private machine: CoffeeMaker) {}
+    makeCoffee() {
+      const coffee = this.machine.makeCoffee(2);
+      console.log(coffee);
+    }
+  }
+
+  // 프로
+  class ProBarista {
+    constructor(private machine: CommercialCoffeeMaker) {}
+    makeCoffee() {
+      const coffee = this.machine.makeCoffee(2);
+      console.log(coffee);
+      this.machine.fillCoffeeBeans(45);
+      this.machine.clean();
+    }
+  }
+
+  const maker: CoffeeMachine = CoffeeMachine.makeMachine(32);
+  const amateur = new AmateurUser(maker);
+  const pro = new ProBarista(maker);
+  // amateur.makeCoffee();
+  pro.makeCoffee();
 }
