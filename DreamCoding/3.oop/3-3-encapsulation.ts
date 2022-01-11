@@ -48,3 +48,19 @@
   maker.fillCoffeeBeans(12);
   // private을 이용해 함수로 커피빈을 설정할수밖에없게 만들었음. 보안성이 더 높아진다.
 }
+
+// 세터와 게터
+class User {
+  firstName: string;
+  lastName: string;
+  fullName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.fullName = `${firstName} ${lastName}`;
+  }
+}
+
+const user = new User("lee", "jeongjoo");
+console.log(user.fullName);
