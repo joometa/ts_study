@@ -53,14 +53,16 @@
 class User {
   firstName: string;
   lastName: string;
-  fullName: string;
-
+  // fullName: string;
+  get fullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
   constructor(firstName: string, lastName: string) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.fullName = `${firstName} ${lastName}`;
   }
 }
 
 const user = new User("lee", "jeongjoo");
+// console.log(user.fullName); // get 적용 전
 console.log(user.fullName);
