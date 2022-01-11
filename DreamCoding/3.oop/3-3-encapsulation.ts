@@ -51,9 +51,9 @@
 
 // 세터와 게터
 class User {
-  firstName: string;
-  lastName: string;
-  // fullName: string;
+  private firstName: string;
+  private lastName: string;
+
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
@@ -64,5 +64,4 @@ class User {
 }
 
 const user = new User("lee", "jeongjoo");
-// console.log(user.fullName); // get 적용 전
-console.log(user.fullName);
+// console.log(user.fullName); // get 적용 전과 동일하게 사용 가능
