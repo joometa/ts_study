@@ -54,8 +54,20 @@ class User {
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
+
+  private internalAge = 3;
+  get getAge(): number {
+    return this.internalAge;
+  }
+  set setAge(num: number) {
+    if (num < 0) {
+      throw new Error("음수는 안돼");
+    }
+    this.internalAge += num;
+  }
   constructor(private firstName: string, private lastName: string) {}
 }
 
 const user = new User("lee", "jeongjoo");
-// console.log(user.fullName); // get 적용 전과 동일하게 사용 가능
+user.setAge = 6;
+console.log(user.getAge);
