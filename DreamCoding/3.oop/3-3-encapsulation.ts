@@ -51,16 +51,10 @@
 
 // 세터와 게터
 class User {
-  private firstName: string;
-  private lastName: string;
-
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
-  constructor(firstName: string, lastName: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
+  constructor(private firstName: string, private lastName: string) {}
 }
 
 const user = new User("lee", "jeongjoo");
